@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lion Capital for Trade & Investment - Premium Fresh & IQF-Frozen Fruits & Vegetables</title>
+
+  <meta name="description"
+    content="Egypt-based exporter of premium fresh and IQF-frozen fruits and vegetables. EU food-safety standards, controlled cold-chain delivery to Europe, Gulf and Asia." />
+  <meta name="keywords"
+    content="fresh fruits, IQF frozen vegetables, Egypt exporter, EU food safety, cold chain, premium produce, international trade" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --clr-bg: #f8fdf8;
+      --clr-primary: #2d5016;
+      --clr-primary-dark: #1e3509;
+      --clr-card: #ffffff;
+      --clr-text: #2c3e50;
+      --clr-accent: #4caf50;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, Arial, sans-serif;
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      line-height: 1.6;
+    }
+
+    .wrapper {
+      background-color: var(--clr-card);
+      border-radius: 0.75rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.12);
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-weight: 800;
+      margin: 0 0 2rem;
+      line-height: 1.2;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--clr-primary);
+      color: #fff;
+      font-weight: 600;
+      padding: 0.875rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 6px 14px -6px var(--clr-primary-dark);
+      font-size: 0.95rem;
+      width: 100%;
+      max-width: 260px;
+      justify-content: center;
+    }
+
+    .btn:hover {
+      background: var(--clr-primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .reveal-btn {
+      margin-top: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: #e9ecef;
+      color: var(--clr-text);
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ced4da;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+      width: 100%;
+      max-width: 200px;
+      justify-content: center;
+    }
+
+    .reveal-btn:hover {
+      background: #dee2e6;
+      border-color: #bfc4c9;
+      transform: translateY(-1px);
+    }
+
+    .reveal-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #bankInfo {
+      margin-top: 1rem;
+      text-align: center;
+      padding: 0 0.5rem;
+    }
+
+    .detail {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-family: monospace;
+      flex-wrap: wrap;
+      padding: 0.5rem;
+      background: rgba(45, 80, 22, 0.05);
+      border-radius: 0.375rem;
+      border: 1px solid rgba(45, 80, 22, 0.1);
+    }
+
+    .detail span {
+      font-weight: 600;
+      color: var(--clr-primary);
+      min-width: 100px;
+      text-align: left;
+      font-size: 0.85rem;
+    }
+
+    .detail code {
+      background: rgba(45, 80, 22, 0.1);
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.8rem;
+      flex: 1;
+      min-width: 120px;
+      word-break: break-all;
+    }
+
+    .detail button {
+      background: var(--clr-primary);
+      border: none;
+      cursor: pointer;
+      padding: 0.375rem;
+      border-radius: 0.25rem;
+      transition: transform 0.1s ease, background 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .detail button:hover {
+      transform: scale(1.1);
+      background: var(--clr-primary-dark);
+    }
+
+    .detail svg {
+      width: 16px;
+      height: 16px;
+      color: white;
+    }
+
+    .copy-status {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+      color: var(--clr-primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .copy-status.show {
+      opacity: 1;
+    }
+
+    .copy-status svg {
+      width: 20px;
+      height: 20px;
+      color: var(--clr-primary);
+      margin-right: 0.5rem;
+    }
+
+    .features {
+      margin: 1.5rem 0;
+      text-align: left;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--clr-text);
+    }
+
+    .feature-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--clr-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .feature-icon svg {
+      width: 14px;
+      height: 14px;
+      color: white;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      opacity: 0.6;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    footer a:hover {
+      color: var(--clr-primary-dark);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --clr-bg: #0a1a0a;
+        --clr-card: #1a2e1a;
+        --clr-text: #e8f5e8;
+        --clr-primary: #4caf50;
+        --clr-primary-dark: #388e3c;
+      }
+
+      .reveal-btn {
+        background: #2d4a2d;
+        border-color: #4a6b4a;
+        color: #e8f5e8;
+      }
+
+      .reveal-btn:hover {
+        background: #3a5a3a;
+      }
+
+      .detail {
+        background: rgba(76, 175, 80, 0.1);
+        border-color: rgba(76, 175, 80, 0.2);
+      }
+
+      .detail span {
+        color: #81c784;
+      }
+
+      .detail code {
+        background: rgba(76, 175, 80, 0.15);
+        color: #e8f5e8;
+      }
+
+      .detail svg {
+        color: white;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile-specific responsive styles */
+    @media (max-width: 480px) {
+      body {
+        padding: 0.5rem;
+      }
+
+      .wrapper {
+        padding: 1.5rem 1rem;
+        border-radius: 0.5rem;
+        max-width: 100%;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 1.51rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .btn,
+      .reveal-btn {
+        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+        width: 100%;
+        max-width: none;
+      }
+
+      .detail {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 0.375rem;
+        padding: 0.75rem;
+      }
+
+      .detail span {
+        min-width: auto;
+        width: 100%;
+        font-size: 0.8rem;
+      }
+
+      .detail code {
+        width: 100%;
+        min-width: auto;
+        font-size: 0.75rem;
+        text-align: center;
+      }
+
+      .detail button {
+        align-self: center;
+        margin-top: 0.25rem;
+      }
+
+      footer {
+        font-size: 0.7rem;
+      }
+
+      footer small {
+        font-size: 0.6rem !important;
+      }
+    }
+
+    /* Tablet styles */
+    @media (min-width: 481px) and (max-width: 768px) {
+      .wrapper {
+        padding: 2.5rem 2rem;
+        max-width: 90%;
+      }
+
+      .btn,
+      .reveal-btn {
+        max-width: 280px;
+      }
+    }
+
+    /* Large screen styles */
+    @media (min-width: 769px) {
+      .wrapper {
+        padding: 3rem 2.5rem;
+      }
+    }
+
+    /* Touch-friendly improvements */
+    @media (hover: none) and (pointer: coarse) {
+
+      .btn,
+      .reveal-btn,
+      .detail button {
+        min-height: 44px;
+        padding: 0.875rem 1rem;
+      }
+
+      .detail button {
+        min-width: 44px;
+        min-height: 44px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrapper" data-nosnippet>
+    <h1>🌱 Fresh & Frozen Harvests</h1>
+
+    <div class="features">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 16.2l-4.2-4.2-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+          </svg>
+        </div>
+        <span>Premium Fresh & IQF-Frozen Fruits & Vegetables</span>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 16.2l-4.2-4.2-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+          </svg>
+        </div>
+        <span>EU Standards • Controlled Cold-Chain</span>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 16.2l-4.2-4.2-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+          </svg>
+        </div>
+        <span>Global Export to Europe, Gulf & Asia</span>
+      </div>
+    </div>
+
+    <a class="btn" href="https://lioncapitaltrade.com" target="_blank" rel="noopener noreferrer nofollow">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <path fill="none" stroke="currentColor" stroke-width="2" d="M3 3h18l-1 13H4L3 3zm0 0l-.5-2H1m4 0l1 8h12" />
+      </svg>
+      Explore our Website
+    </a>
+
+    <button id="revealBtn" class="reveal-btn" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor"
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+      </svg>
+      Payment Details
+    </button>
+
+    <div id="bankInfo" class="hidden"></div>
+
+    <div id="copyStatus" class="copy-status" aria-label="Copied">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M9 16.2l-4.2-4.2-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+      </svg>
+      Copied to clipboard!
+    </div>
+
+    <footer>
+      🦁 Lion Capital for Trade & Investment<br />
+      <small style="opacity: 0.7; font-size: 0.65rem; margin-top: 0.5rem; display: block;">
+        Developed by <a href="https://linkedin.com/in/saeedarafa" target="_blank"
+          rel="noopener noreferrer nofollow">Saeed Arafa</a>
+      </small>
+    </footer>
+  </main>
+
+  <script>
+    const BANK_DETAILS = {
+      holder: "Lion Capital for Trade and Investment",
+      bankName: "Arab African International Bank (AAIB)",
+      iban: "EG24 0057 0290 0118 1307 9100 10301",
+    };
+
+    const buildDetailRow = (label, value) => `
+      <div class="detail">
+        <span>${label}</span>
+        <code>${value}</code>
+        <button type="button" class="copy-line" data-value="${value}" aria-label="Copy ${label}">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg>
+        </button>
+      </div>`;
+
+    function copyToClipboard(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+      }
+      return new Promise((resolve, reject) => {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.top = "-9999px";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, ta.value.length);
+        const ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        ok ? resolve() : reject();
+      });
+    }
+
+    const revealBtn = document.getElementById("revealBtn");
+    const bankInfo = document.getElementById("bankInfo");
+    const copyStatus = document.getElementById("copyStatus");
+    let rendered = false;
+
+    function flashIcon() {
+      copyStatus.classList.add("show");
+      setTimeout(() => copyStatus.classList.remove("show"), 1500);
+    }
+
+    revealBtn.addEventListener("click", () => {
+      if (!rendered) {
+        bankInfo.innerHTML =
+          buildDetailRow("Account Holder:", BANK_DETAILS.holder) +
+          buildDetailRow("Bank Name:", BANK_DETAILS.bankName) +
+          buildDetailRow("IBAN:", BANK_DETAILS.iban);
+        bankInfo.classList.remove("hidden");
+        rendered = true;
+      }
+      const fullText = Object.entries(BANK_DETAILS).map(([k, v]) => `${k}: ${v}`).join("\n");
+      copyToClipboard(fullText).then(flashIcon).catch(() => alert("Copy failed. Please copy manually."));
+    });
+
+    // copy individual lines (event delegation on bankInfo)
+    bankInfo.addEventListener("click", (e) => {
+      const btn = e.target.closest(".copy-line");
+      if (!btn) return;
+      const val = btn.dataset.value;
+      copyToClipboard(val).then(flashIcon).catch(() => alert("Copy failed. Please copy manually."));
+    });
+  </script>
+</body>
+
+</html>
